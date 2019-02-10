@@ -1,9 +1,8 @@
 const mysql  = require('mysql');
-const dotenv = require('dotenv').config({path: '../.env'});
 const keys = require('./keys');
 
 const connection = mysql.createConnection({
-    port: keys.mysql.port,
+    port: 3306,
     host: keys.mysql.host,
     user: keys.mysql.user,
     password: keys.mysql.password,

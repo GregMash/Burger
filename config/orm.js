@@ -25,29 +25,33 @@ function objectToSql(object) {
 const orm = {
     all: (tableInput, cb) => {
         const queryString = `SELECT * FROM ${tableInput};`;
+        console.log(queryString);
         connection.query(queryString, (err, res) => {
-            if (err) throw err;
+            if (err) {throw err};
             cb(res);
         })
     },
     create: (table, cols, vals, cb) => {
-        const queryString = `Insert Into ${table} (${cols.toString}) VALUES (${printQuestionMarks(vals.length)})`;
+        const queryString = `INSERT INTO ${table} (${cols.toString}) VALUES (${printQuestionMarks(vals.length)})`;
+        console.log(queryString);
         connection.query(queryString, (err, res) => {
-            if (err) throw err;
+            if (err) {throw err};
             cb(res);
         })
     },
     update: (table, objColVals, condition, cb) => {
         const queryString = `UPDATE ${table} SET ${objectToSql(objColVals)} WHERE ${condition}`;
+        console.log(queryString);
         connection.query(queryString, (err, res) => {
-            if (err) throw err;
+            if (err) {throw err};
             cb(res);
         })
     },
     delete: (table, condition, cb) => {
         const queryString = `DELETE FROM ${table} WHERE ${condition}`;
+        console.log(queryString);
         connection.query(queryString, (err, res) => {
-            if (err) throw err;
+            if (err) {throw err};
             cb(res);
         })
     }
