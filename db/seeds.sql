@@ -1,13 +1,13 @@
-INSERT INTO burgers (burger_name, devoured)
+INSERT INTO burgers (burger_name)
 VALUES (
-    'The Final Kraut Down Burger', 0
+    'The Final Kraut Down Burger'
 ), 
 (
-    'New Baconings Burger', 0
+    'New Baconings Burger'
 ),
 (
-    'The Longest Chard Burger', 0
+    'The Longest Chard Burger'
 ),
 (
-    'Sympathy for the Deviled Egg Burger', 0
+    'Sympathy for the Deviled Egg Burger'
 );

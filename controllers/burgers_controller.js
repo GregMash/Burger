@@ -1,4 +1,5 @@
 const express = require('express');
+
 const router = express.Router();
 const burger = require('../models/burger');
 
@@ -13,19 +14,18 @@ router.get('/', (req, res) => {
     });
 });
 
-router.post("/api/burgers", function (req, res) {
+router.post("/api/burgers", (req, res) => {
     burger.create([
-        "name", "devoured"
+        "burger_name", "devoured"
     ], [
-            req.body.name, false
+            req.body.burger_name, req.body.devoured
         ], (result) => {
             res.json({ id: result.insertId });
         });
 });
 
-router.put("/api/burgers/:id", function (req, res) {
-    const condition = `id = ${req.params.id}`;
-
+router.put("/api/burgers/:id", (req, res) => {
+    let condition = `id = ${req.params.id}`;
     console.log(`condition, ${condition}`);
 
     burger.update({
@@ -39,9 +39,9 @@ router.put("/api/burgers/:id", function (req, res) {
     });
 });
 
-router.delete("/api/burgers/:id", function (req, res) {
-    const condition = `id = ${req.params.id}`;
-
+router.delete("/api/burgers/:id", (req, res) => {
+    let condition = `id = ${req.params.id}`;
+    console.log(req.params);
     burger.delete(condition, (result) => {
         if (result.affectedRows == 0) {
             return res.status(404).end();
